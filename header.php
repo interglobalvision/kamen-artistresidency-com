@@ -26,7 +26,7 @@ get_template_part('partials/seo');
 <body <?php body_class(); ?>>
 <!--[if lt IE 9]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-<section id="main-container" class="grid-row">
+<section id="main-container" class="grid-row flex-nowrap">
 
   <header id="header" class="item-s-12 item-m-3 item-l-2">
     <h1 class="u-visuallyhidden"><?php bloginfo('name'); ?></a></h1>
