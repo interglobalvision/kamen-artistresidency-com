@@ -26,8 +26,33 @@ get_template_part('partials/seo');
 <body <?php body_class(); ?>>
 <!--[if lt IE 9]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-<section id="main-container">
+<section id="main-container" class="grid-row">
 
-  <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+  <header id="header" class="item-s-12 item-m-3 item-l-2">
+    <h1 class="u-visuallyhidden"><?php bloginfo('name'); ?></a></h1>
+    <a class="logo-holder" href="<?php echo home_url(); ?>">Logo</a>
+    <div id="menu-holder">
+      <nav id="main-nav">
+        <ul>
+          <li>
+            <a href="<?php echo home_url('residency'); ?>">Residency</a>
+          </li>
+          <li>
+            <a href="<?php echo home_url('apply'); ?>">Apply</a>
+          </li>
+          <li>
+            <a href="<?php echo get_post_type_archive_link('resident'); ?>">Residents</a>
+          </li>
+          <li>
+            <a href="<?php echo get_post_type_archive_link('post'); ?>">Archive</a>
+          </li>
+          <li>
+            <a href="<?php echo home_url('about'); ?>">About</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="contact">
+        Contact
+      </div>
+    </div>
   </header>
