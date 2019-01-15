@@ -3,6 +3,7 @@
 
 // Import dependencies
 import lazySizes from 'lazysizes';
+import slick from 'slick-carousel';
 
 // Import style
 import '../styl/site.styl';
@@ -18,12 +19,17 @@ class Site {
   }
 
   onResize() {
-
+    this.setSlideHeight();
   }
 
   onReady() {
     lazySizes.init();
 
+    this.bindMenuToggles();
+
+    this.$slickCarousel = $('#slick-carousel');
+
+    this.initCarousel();
   }
 
   fixWidows() {
@@ -34,6 +40,41 @@ class Site {
       $(this).html(string);
     });
   }
+
+  initCarousel() {
+    if (this.$slickCarousel.length) {
+      this.$slickCarousel.slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        centerMode: false,
+        variableWidth: false,
+        dots: true,
+        arrows: true,
+        prevArrow: '#slick-prev',
+        nextArrow: '#slick-next',
+        focusOnSelect: false,
+        appendDots: '#slick-dots-holder',
+        rows: 0
+      });
+
+      this.setSlideHeight();
+    }
+  }
+
+  setSlideHeight() {
+    if ($('.slick-slide').length) {
+      $('.slick-slide').height($('.slick-list').height());
+    }
+  }
+
+  bindMenuToggles() {
+    $('.menu-toggle, .current_page_item').on('click', function(e) {
+      e.preventDefault();
+      $('#menu-holder').toggleClass('active');
+    });
+  }
+
 }
 
 new Site();
