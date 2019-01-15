@@ -48,4 +48,10 @@ function custom_login_logo() {
   echo '<style type="text/css">h1 a { background-image:url(' . get_bloginfo( 'template_directory' ) . '/images/login-logo.png) !important; background-size:300px auto !important; width:300px !important; }</style>';
 }
 add_action( 'login_head', 'custom_login_logo' );
- */
+*/
+
+// WP Nav Menu
+function register_igv_nav_menu() {
+  register_nav_menu('main',__( 'Main Menu' ));
+}
+add_action( 'init', 'register_igv_nav_menu' );
