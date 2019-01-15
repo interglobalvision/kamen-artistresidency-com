@@ -1,5 +1,6 @@
 @import '~kouto-swiss/index.styl'
 @import '~globie-styl-library/helpers'
+@import '~slick-carousel/slick/slick.css'
 
 // ******************************************************
 
@@ -22,7 +23,7 @@ normalize()
 @import 'fonts/fonts'
 
 $font-sans = font-stack('Helvetica')
-$font-serif = font-stack('Georgia')
+$font-serif = 'Freight', font-stack('Georgia')
 
 // ******************************************************
 
@@ -41,7 +42,7 @@ $font-tracking-basic = .001em
 $font-tracking-wider = .05em
 
 html
-  font-family: $font-sans
+  font-family: $font-serif
   letter-spacing: $font-tracking-basic
 
 body
@@ -66,8 +67,12 @@ body
 
 // VARIABLES
 
-$color-black = rgb(0, 0, 0)
+$color-black = rgb(28, 28, 28)
 $color-white = rgb(255, 255, 255)
+$color-grey-lite = rgb(240, 240, 240)
+$color-grey-dark = rgb(151, 151, 151)
+$color-green = rgb(127, 143, 143)
+$color-green-lite = rgb(135, 185, 185)
 
 // ******************************************************
 
@@ -75,7 +80,7 @@ $color-white = rgb(255, 255, 255)
 
 html
   color: $color-black
-  background-color: $color-white
+  background-color: $color-grey-lite
 
 img
   height: auto

@@ -7,15 +7,105 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-basic = 12px
-$font-size-extra = 48px
-$font-size-large = 36px
-$font-size-mid = 24px
-$font-size-small = 18px
-$font-size-tiny = 8px
+$font-size-small = 10px
+$font-size-basic = 14px
+$font-size-mid = 18px
+$font-size-large = 24px
 
 grid-maker(96%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
+font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
+
+#menu-holder
+  position: fixed
+  top: 0
+  left: 0
+  background: $color-grey-lite
+  width: 100vw
+  height: 100vh
+  z-index: 100
+  opacity: 0
+  pointer-events: none
+  transition: opacity .5s
+  will-change: opacity
+  &.active
+    opacity: 1
+    pointer-events: auto
+
+#menu-wrapper
+  display: flex
+  flex-direction: column
+  height: 100%
+
+#main-container, #mobile-menu
+  width: 96%
+  margin: 0 auto
+
+#main-nav
+  flex-grow: 1
+  flex-direction: column
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  li
+    margin-top: $margin-micro
+  a
+    display: block
+    padding: $margin-micro
+
+#contact
+  text-align: center
+  padding: $margin-basic 0
+
+#header
+  display: flex
+  flex-wrap: nowrap
+
+#logo-holder
+  flex-grow: 1
+  display: flex
+  align-items: flex-end
+  line-height: 1.2em
+
+.menu-toggle
+  margin: $margin-tiny
+  padding: $margin-small
+  margin-right: 0
+  cursor: pointer
+  display: inline-block
+
+#header-logo
+  width: 120px
+
+.menu-icon
+  width: 20px
+
+.current_page_item
+  color: $color-green-lite
+
+p
+  a:link,
+  a:visited,
+  a:active
+    color: $color-green
+
+h1
+  font-size: $font-size-large
+
+h2
+  font-size: $font-size-mid
+  margin-top: .3em
+
+#main-content
+  margin-bottom: $margin-basic
+  p, ul
+    max-width: 400px
+  ul
+    margin-bottom: 1em
+    list-style-type: disc
+
+#page
+  padding-left: 21px
