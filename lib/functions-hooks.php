@@ -9,6 +9,7 @@ function create_custom_pages() {
     'residency' => 'Residency',
     'apply' => 'Apply',
     'about' => 'About',
+    'archive' => 'Archive',
   );
   foreach($custom_pages as $page_name => $page_title) {
     $page = get_page_by_path($page_name);
