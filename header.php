@@ -26,34 +26,32 @@ get_template_part('partials/seo');
 <body <?php body_class(); ?>>
 <!--[if lt IE 9]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-<section id="main-container" class="mobile-container grid-row flex-nowrap">
+<?php
+$options = get_site_option('_igv_site_options');
+?>
 
-  <header id="header" class="grid-item item-s-12 item-m-3 item-l-2">
+<section id="main-container">
+
+  <header id="header" class="padding-top-tiny padding-bottom-basic">
     <h1 class="u-visuallyhidden"><?php bloginfo('name'); ?></a></h1>
-    <div id="logo-holder">
-      <div>
-        <a href="<?php echo home_url(); ?>"><img id="header-logo" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/kamen-logo-web.png" /></a>
-      </div>
-      <div id="logo-subtitle" class="grid-item flex-grow">
-        <span>Artist Residency</span>
-      </div>
-    </div>
-    <div class="menu-toggle"><img class="menu-icon" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/menu-open.png" /></div>
-    <div id="menu-holder" class="grid-item">
-      <div id="menu-wrapper">
-        <div class="text-align-right">
-          <div class="menu-toggle"><img class="menu-icon" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/menu-close.png" /></div>
+
+    <div class="container">
+      <div class="grid-row align-items-center justify-between">
+
+        <div id="logo-holder" class="grid-item item-s-auto item-l-3">
+          <a href="<?php echo home_url(); ?>"><img id="header-logo" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/kamen-logo.png" /></a>
         </div>
-        <nav id="main-nav" class="font-size-large">
+
+        <nav id="main-nav" class="grid-item item-s-12 item-m-auto flex-grow">
           <?php
             wp_nav_menu( array(
               'menu' => 'main'
             ) );
           ?>
         </nav>
-        <div id="contact">
-          Contact
-        </div>
+
+        <div id="header-spacer" class="grid-item item-s-auto item-l-3">&nbsp;</div>
+
       </div>
     </div>
   </header>

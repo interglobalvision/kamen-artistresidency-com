@@ -1,4 +1,4 @@
-$gutter = 14px
+$gutter = 18px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
@@ -7,54 +7,30 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-small = 10px
 $font-size-basic = 14px
-$font-size-mid = 18px
-$font-size-large = 24px
+$font-size-small = $font-size-basic * .75
+$font-size-mid = $font-size-basic * 1.25
+$font-size-large = $font-size-basic * 1.75
 
-grid-maker(96%, $gutter, s)
+grid-maker(94%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
 font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
 
-#menu-holder
-  position: fixed
-  top: 0
-  left: 0
-  background: $color-grey-lite
-  width: 100vw
-  height: 100vh
-  z-index: 100
-  opacity: 0
-  pointer-events: none
-  transition: opacity .5s
-  will-change: opacity
-  &.active
-    opacity: 1
-    pointer-events: auto
+$header-height = 144px
+$footer-height = 253px
 
-#menu-wrapper
-  display: flex
-  flex-direction: column
-  height: 100%
+#main-content
+  min-height: calc('100vh - ' + ($header-height + $footer-height));
+  ul
+    margin-bottom: 1em
+    list-style-type: disc
+    li
+      margin-bottom: .3em
 
-#main-container, #mobile-menu
-  width: 96%
-  margin: 0 auto
-
-#main-nav
-  flex-grow: 1
-  flex-direction: column
-  display: flex
-  justify-content: center
-  align-items: center
-  text-align: center
-  li
-    margin-top: $margin-micro
-  a
-    display: block
-    padding: $margin-micro
+.container
+  max-width: 1600px
 
 #contact
   text-align: center
@@ -64,11 +40,19 @@ font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size
   display: flex
   flex-wrap: nowrap
 
-#logo-holder
-  flex-grow: 1
-  display: flex
-  align-items: flex-end
-  line-height: 1.2em
+#main-nav
+  margin-top: $margin-small
+  ul
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+
+input,
+button,
+[type=submit]
+  appearance: none
+  font-family: $font-sans
 
 .menu-toggle
   margin: $margin-tiny
@@ -80,32 +64,105 @@ font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size
 #header-logo
   width: 120px
 
+#header-spacer
+  display: none
+
 .menu-icon
   width: 20px
 
-.current_page_item
-  color: $color-green-lite
+.current-menu-item
+  color: $color-blue
 
 p
   a:link,
   a:visited,
   a:active
-    color: $color-green
+    color: $color-blue
+
+.social-link
+  margin-left: .4em
+  display: inline-block
+  img
+    width: 1.2em
+  &:first-of-type
+    margin-left: 0
+
+#footer
+  background-color: $color-blue
+  color: $color-white
+  p
+    margin-bottom: 0
+
+#footer-logo
+  width: 90px
+
+#mailchimp-email
+  background: transparent
+  border: none
+  border-bottom: 1px solid $color-white
+  color: $color-white
+  margin-right: $margin-micro
+  &::placeholder
+    color: $color-grey-lite
+    font-family: $font-sans
+
+#mailchimp-submit
+  border: none
+  background: transparent
+  color: $color-white
+  cursor: pointer
+  font-weight: normal
+
+#mailchimp-response
+  position: absolute
+
+#recent-news-list
+  padding-left: 2em
+  li
+    list-style-type: number
+
+.slide-content-holder:not(:last-of-type)
+  margin-bottom: $margin-basic
+
+#single-header
+  order: 1
+
+#single-content
+  order: 2
+
+#carousel-container
+  order: 3
 
 h1
   font-size: $font-size-large
 
 h2
   font-size: $font-size-mid
-  margin-top: .3em
+  margin-bottom: .3em
 
-#main-content
-  margin-bottom: $margin-basic
-  p, ul
-    max-width: 400px
-  ul
-    margin-bottom: 1em
-    list-style-type: disc
+.content-section:not(:first-of-type)
+  margin-top: $margin-small
 
-#page
-  padding-left: 21px
+p img, .wp-caption
+  display: block
+  margin: 0 auto
+  text-align: center
+
+.wp-caption-text
+  font-size: $font-size-small
+
+#footer-social
+  order: 5
+  text-align: left
+
+#footer-logo-holder
+  order: 1
+
+#footer-mailinglist
+  order: 2
+
+#footer-email
+  order: 3
+
+#footer-address
+  order: 4

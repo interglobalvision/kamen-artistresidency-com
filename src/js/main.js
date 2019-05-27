@@ -4,6 +4,7 @@
 // Import dependencies
 import lazySizes from 'lazysizes';
 import slick from 'slick-carousel';
+import Mailchimp from './mailchimp';
 
 // Import style
 import '../styl/site.styl';
@@ -55,7 +56,14 @@ class Site {
         nextArrow: '#slick-next',
         focusOnSelect: false,
         appendDots: '#slick-dots-holder',
-        rows: 0
+        rows: 0,
+        /*responsive: [
+          {
+            breakpoint: 650,
+            settings: "unslick"
+          }
+        ],
+        mobileFirst: false,*/
       });
 
       this.setSlideHeight();
@@ -78,3 +86,4 @@ class Site {
 }
 
 new Site();
+new Mailchimp();

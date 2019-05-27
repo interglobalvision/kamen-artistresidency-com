@@ -1,6 +1,6 @@
 @media screen and (min-width: 1024px)
 
-  $gutter = 24px
+  $gutter = 36px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -9,12 +9,47 @@
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  grid-maker(1000px, $gutter, l)
+  $font-size-basic = 16px
+  $font-size-small = $font-size-basic * .75
+  $font-size-mid = $font-size-basic * 1.25
+  $font-size-large = $font-size-basic * 1.75
+
+  grid-maker(96%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  .desktop-only
-    display: initial !important
+  font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
+
+  $header-height = 174px
+  $footer-height = 155px
+
+  #main-content
+    min-height: calc('100vh - ' + ($header-height + $footer-height));
+
+  #header-logo
+    width: 160px
 
   #main-nav
-    padding-top: $margin-basic
+    a
+      padding: $margin-tiny
+
+  #footer-logo
+    width: 120px
+
+  h1
+    font-size: $font-size-large
+
+  h2
+    font-size: $font-size-mid
+
+  .wp-caption-text
+    font-size: $font-size-small
+
+  #footer-social
+    order: 5
+  #footer-mailinglist
+    order: 2
+  #footer-email
+    order: 3
+  #footer-address
+    order: 4

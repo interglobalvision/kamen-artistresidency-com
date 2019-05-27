@@ -1,6 +1,6 @@
-@media screen and (min-width: 720px)
+@media screen and (min-width: 640px)
 
-  $gutter = 21px
+  $gutter = 27px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -9,56 +9,63 @@
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
+  $font-size-basic = 15px
+  $font-size-small = $font-size-basic * .75
+  $font-size-mid = $font-size-basic * 1.25
+  $font-size-large = $font-size-basic * 1.75
+
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  grid-maker(680px, $gutter, m)
+  grid-maker(96%, $gutter, m)
+
+  font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
 
   .mobile-only
     display: none !important
 
-  .menu-toggle
-    display: none
+  .desktop-only
+    display: initial !important
+
+  $header-height = 132px
+  $footer-height = 118px
+
+  body
+    border-top: 10px solid $color-blue
+
+  #main-content
+    min-height: calc('100vh - ' + ($header-height + $footer-height));
 
   #header
-    flex-direction: column
-    height: 100vh
-    position: fixed
-
-  #logo-holder
-    flex-direction: column
-    align-items: flex-start
-    flex-grow: 0
-    padding-top: $margin-small
-
-  #logo-subtitle
-    padding-left: 21px
-
-  #menu-holder
-    position: relative
-    opacity: 1
-    pointer-events: auto
-    height: auto
-    padding-left: 21px
-    flex-grow: 1
-    display: flex
-    flex-direction: column
-
-  #menu-wrapper
     width: 100%
-    flex-grow: 1
 
   #main-nav
-    align-items: flex-start
-    text-align: left
-    justify-content: flex-start
-    padding-top: $margin-basic
-    li
-      margin-top: 0
+    display: block
+    height: 100%
+    margin-top: 0
+    div
+      height: 100%
+    ul
+      width: 100%
+      height: 100%
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: center
     a
-      padding: 0
+      padding: 0 $margin-tiny
 
-  #contact
-    text-align: left
+  #logo-holder
+    order: 1
+  #main-nav
+    order: 2
+  #header-spacer
+    display: initial
+    order: 3
+
+  #single-content
+    order: 3
+  #carousel-container
+    order: 2
 
   .slick-list
     display: block
@@ -75,6 +82,7 @@
     margin-right: auto
 
   .slide-content-holder
+    margin-bottom: 0 !important
     .grid-column
       width: 100%
       height: 100%
@@ -90,12 +98,12 @@
   .slick-arrow
     width: 20px
     height: 20px
-    border: 2px solid $color-grey-dark
+    border: 2px solid $color-black
     border-width: 2px 2px 0 0
     background: none
     cursor: pointer
     &:hover
-      border-color: $color-green-lite
+      border-color: $color-blue
 
   #slick-prev
     transform: rotate(-135deg)
@@ -110,14 +118,15 @@
       width: 10px
       font-size: 0
       appearance: none
-      border: 2px solid $color-grey-dark
+      border: 2px solid $color-black
       border-radius: 10px
       margin-right: $margin-tiny
       cursor: pointer
       &:hover:not(.slick-active)
-        border-color: $color-green-lite
+        border-color: $color-blue
       &.slick-active
-        background: $color-grey-dark
+        background: $color-blue
+        border: 2px solid $color-blue
         cursor: default
         pointer-events: none
       button
@@ -134,3 +143,25 @@
       -webkit-column-break-inside: avoid
       page-break-inside: avoid
       break-inside: avoid-column
+
+  h1
+    font-size: $font-size-large
+
+  h2
+    font-size: $font-size-mid
+
+  .wp-caption-text
+    font-size: $font-size-small
+
+  #footer-social
+    order: 2
+    text-align: right
+
+  #footer-mailinglist
+    order: 3
+
+  #footer-email
+    order: 4
+
+  #footer-address
+    order: 5

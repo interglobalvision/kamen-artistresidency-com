@@ -61,6 +61,37 @@ function igv_register_theme_options_metabox() {
   // Social Media variables
 
   $site_options->add_field( array(
+    'name'    => esc_html__( 'Contact', 'cmb2' ),
+    'desc'    => esc_html__( '', 'cmb2' ),
+    'id'      => $prefix . 'contact_title',
+    'type'    => 'title',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Email', 'cmb2' ),
+    'id'      => 'contact_email',
+    'type'    => 'text',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Address', 'cmb2' ),
+    'id'      => 'contact_address',
+    'type'    => 'textarea',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Google Maps URL', 'cmb2' ),
+    'id'      => 'contact_maps_url',
+    'type'    => 'text_url',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Mailchimp Action', 'cmb2' ),
+    'id'      => 'contact_mailchimp',
+    'type'    => 'text_url',
+  ) );
+
+  $site_options->add_field( array(
     'name'    => esc_html__( 'Social Media', 'cmb2' ),
     'desc'    => esc_html__( 'Urls and accounts for different social media platforms. For use in menus and metadata', 'cmb2' ),
     'id'      => $prefix . 'socialmedia_title',

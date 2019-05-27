@@ -39,6 +39,31 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
    */
 
+  $resident_metabox = new_cmb2_box( array(
+		'id'            => $prefix . 'resident_metabox',
+		'title'         => esc_html__( 'Resident', 'cmb2' ),
+		'object_types'  => array( 'resident' ), // Post type
+	) );
+
+  $resident_metabox->add_field( array(
+		'name'         => esc_html__( 'Dates of Residency', 'cmb2' ),
+		'desc'         => esc_html__( '', 'cmb2' ),
+		'id'           => $prefix . 'residency',
+		'type'         => 'text',
+	) );
+
+  $news_metabox = new_cmb2_box( array(
+		'id'            => $prefix . 'news_metabox',
+		'title'         => esc_html__( 'News Options', 'cmb2' ),
+		'object_types'  => array( 'post' ), // Post type
+	) );
+
+  $news_metabox->add_field( array(
+		'name' => esc_html__( 'Hide Date', 'cmb2' ),
+		'id'   => $prefix . 'hide_date',
+		'type' => 'checkbox',
+	) );
+
   $options_metabox = new_cmb2_box( array(
 		'id'            => $prefix . 'options_metabox',
 		'title'         => esc_html__( 'Options', 'cmb2' ),
@@ -53,47 +78,73 @@ function igv_cmb_metaboxes() {
 		'preview_size' => array( 150, 150 ), // Default: array( 50, 50 )
 	) );
 
-  // APPLY
+  // Sections
+  $sections_metabox = new_cmb2_box( array(
+    'id'            => $prefix . 'sections_metabox',
+    'title'         => esc_html__( 'Sections', 'cmb2' ),
+    'object_types'  => array( 'page' ), // Post type
+  ) );
 
-  $apply_page = get_page_by_path('apply');
+  $sections_group = $sections_metabox->add_field( array(
+		'id'          => $prefix . 'sections',
+		'type'        => 'group',
+		'description' => esc_html__( '', 'cmb2' ),
+		'options'     => array(
+			'group_title'   => esc_html__( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+			'add_button'    => esc_html__( 'Add Another Section', 'cmb2' ),
+			'remove_button' => esc_html__( 'Remove Section', 'cmb2' ),
+			'sortable'      => true,
+			// 'closed'     => true, // true to have the groups closed by default
+		),
+	) );
 
-  if (!empty($apply_page) ) {
-    $apply_metabox = new_cmb2_box( array(
-      'id'            => $prefix . 'apply_metabox',
-      'title'         => esc_html__( 'Fields', 'cmb2' ),
+  $sections_metabox->add_group_field( $sections_group, array(
+		'name'       => esc_html__( 'Section', 'cmb2' ),
+		'id'         => 'content',
+		'type' => 'wysiwyg',
+    'options' => array(
+	    'wpautop' => false, // use wpautop?
+	    'media_buttons' => true, // show insert/upload button(s)
+      'textarea_rows' => get_option('default_post_edit_rows', 10), // rows="..."
+  	),
+	) );
+
+  $about_page = get_page_by_path('about');
+
+  if (!empty($about_page) ) {
+
+    // Team
+    $team_metabox = new_cmb2_box( array(
+      'id'            => $prefix . 'team_metabox',
+      'title'         => esc_html__( 'Team', 'cmb2' ),
       'object_types'  => array( 'page' ), // Post type
-      'show_on'      => array( 'key' => 'id', 'value' => array($apply_page->ID) ),
+      'show_on'      => array( 'key' => 'id', 'value' => array($about_page->ID) ),
     ) );
 
-    $apply_metabox->add_field( array(
-  		'name' => esc_html__( 'Deadlines', 'cmb2' ),
-  		'id'   => $prefix . 'apply_deadlines',
+    $team_group = $team_metabox->add_field( array(
+  		'id'          => $prefix . 'team',
+  		'type'        => 'group',
+  		'description' => esc_html__( '', 'cmb2' ),
+  		'options'     => array(
+  			'group_title'   => esc_html__( 'Team Member {#}', 'cmb2' ), // {#} gets replaced by row number
+  			'add_button'    => esc_html__( 'Add Another Team Member', 'cmb2' ),
+  			'remove_button' => esc_html__( 'Remove Team Member', 'cmb2' ),
+  			'sortable'      => true,
+  			// 'closed'     => true, // true to have the groups closed by default
+  		),
+  	) );
+
+    $team_metabox->add_group_field( $team_group, array(
+  		'name'       => esc_html__( 'Member', 'cmb2' ),
+  		'id'         => 'member',
   		'type' => 'wysiwyg',
       'options' => array(
   	    'wpautop' => false, // use wpautop?
-  	    'media_buttons' => false, // show insert/upload button(s)
+  	    'media_buttons' => true, // show insert/upload button(s)
+        'textarea_rows' => get_option('default_post_edit_rows', 10), // rows="..."
     	),
   	) );
 
-    $apply_metabox->add_field( array(
-  		'name' => esc_html__( 'Residence Period', 'cmb2' ),
-  		'id'   => $prefix . 'apply_period',
-  		'type' => 'wysiwyg',
-      'options' => array(
-  	    'wpautop' => false, // use wpautop?
-  	    'media_buttons' => false, // show insert/upload button(s)
-    	),
-  	) );
-
-    $apply_metabox->add_field( array(
-  		'name' => esc_html__( 'Submission', 'cmb2' ),
-  		'id'   => $prefix . 'apply_submission',
-  		'type' => 'wysiwyg',
-      'options' => array(
-  	    'wpautop' => false, // use wpautop?
-  	    'media_buttons' => false, // show insert/upload button(s)
-    	),
-  	) );
   }
 
 }
