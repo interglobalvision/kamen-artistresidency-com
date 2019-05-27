@@ -17,6 +17,8 @@ class Site {
 
     $(document).ready(this.onReady.bind(this));
 
+
+
   }
 
   onResize() {
@@ -27,6 +29,8 @@ class Site {
     lazySizes.init();
 
     this.bindMenuToggles();
+
+    this.setSlideHeight = this.setSlideHeight.bind(this);
 
     this.$slickCarousel = $('#slick-carousel');
 
@@ -70,7 +74,7 @@ class Site {
         mobileFirst: false,*/
       });
 
-      this.setSlideHeight();
+      this.$slickCarousel.on('init', this.setSlideHeight);
     }
   }
 

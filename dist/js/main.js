@@ -120,6 +120,8 @@ var Site = function () {
 
       this.bindMenuToggles();
 
+      this.setSlideHeight = this.setSlideHeight.bind(this);
+
       this.$slickCarousel = $('#slick-carousel');
 
       this.initCarousel();
@@ -164,7 +166,7 @@ var Site = function () {
           mobileFirst: false,*/
         });
 
-        this.setSlideHeight();
+        this.$slickCarousel.on('init', this.setSlideHeight);
       }
     }
   }, {
