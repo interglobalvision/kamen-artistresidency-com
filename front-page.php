@@ -12,7 +12,7 @@ if (have_posts()) {
     the_post();
 
     $images = get_post_meta($post->ID, '_igv_images', true);
-    $recent_posts = get_posts(array('posts_per_page' => 4));
+    $recent_posts = get_posts(array('posts_per_page' => 5));
 
     render_carousel($images);
     if (!empty($recent_posts)) {
