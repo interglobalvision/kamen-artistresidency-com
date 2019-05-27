@@ -44,9 +44,11 @@ class Site {
 
   initCarousel() {
     if (this.$slickCarousel.length) {
+      var autoPlay = $('body').hasClass('home') ? true : false;
+
       this.$slickCarousel.slick({
         infinite: true,
-        speed: 300,
+        speed: 400,
         slidesToShow: 1,
         centerMode: false,
         variableWidth: false,
@@ -57,6 +59,8 @@ class Site {
         focusOnSelect: false,
         appendDots: '#slick-dots-holder',
         rows: 0,
+        autoplay: autoPlay,
+        autoplaySpeed: 4000,
         /*responsive: [
           {
             breakpoint: 650,

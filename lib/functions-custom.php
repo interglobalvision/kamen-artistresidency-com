@@ -39,10 +39,10 @@ function render_carousel($images) {
     <div class="slick-arrow-holder grid-item item-m-1 grid-row align-items-center">
       <div id="slick-next" class="slick-arrow"></div>
     </div>
-    <div id="slick-dots-holder" class="grid-item item-m-10 item-l-8 text-align-center margin-top-tiny"></div>
     <?php
       }
     ?>
+    <div id="slick-dots-holder" class="grid-item item-m-10 item-l-8 text-align-center margin-top-tiny"></div>
   </div>
 <?php
   }
