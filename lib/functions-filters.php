@@ -48,7 +48,7 @@ add_filter('wp_get_attachment_image_attributes', 'add_lazysize_on_srcset');
 
 
 // override gutenberg
-add_filter('use_block_editor_for_post', '__return_false');
+// add_filter('use_block_editor_for_post', '__return_false');
 
 // hide meta boxes
 add_filter('hidden_meta_boxes','hide_meta_box',10,2);
@@ -56,3 +56,9 @@ function hide_meta_box($hidden, $screen) {
   $hidden = array('postexcerpt','slugdiv','postcustom','trackbacksdiv', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv');
   return $hidden;
 }
+
+// excerpt ellipsis
+function new_excerpt_more($more) {
+  return '<span>... <a href="' . get_permalink( get_the_ID() ) . '" class="link_underline">Continue reading</a></span>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

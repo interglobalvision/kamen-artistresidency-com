@@ -71,11 +71,46 @@ function igv_cmb_metaboxes() {
 	) );
 
   $options_metabox->add_field( array(
-		'name'         => esc_html__( 'Image carousel', 'cmb2' ),
+		'name'         => esc_html__( 'Image carousel (obsolete)', 'cmb2' ),
 		'desc'         => esc_html__( '', 'cmb2' ),
 		'id'           => $prefix . 'images',
 		'type'         => 'file_list',
 		'preview_size' => array( 150, 150 ), // Default: array( 50, 50 )
+    'show_on_cb'    => 'igv_exclude_field',
+	) );
+
+  $gallery_metabox = new_cmb2_box( array(
+		'id'            => $prefix . 'gallery_metabox',
+		'title'         => esc_html__( 'Gallery', 'cmb2' ),
+		'object_types'  => array( 'post', 'page', 'resident' ), // Post type
+	) );
+
+  $gallery_group = $gallery_metabox->add_field( array(
+		'id'          => $prefix . 'gallery',
+		'type'        => 'group',
+		'description' => esc_html__( '', 'cmb2' ),
+		'options'     => array(
+			'group_title'   => esc_html__( 'Image {#}', 'cmb2' ), // {#} gets replaced by row number
+			'add_button'    => esc_html__( 'Add Another Image', 'cmb2' ),
+			'remove_button' => esc_html__( 'Remove Image', 'cmb2' ),
+			'sortable'      => true,
+			// 'closed'     => true, // true to have the groups closed by default
+		),
+    'show_on_cb'    => 'igv_exclude_field_news',
+	) );
+
+  $gallery_metabox->add_group_field( $gallery_group, array(
+		'name'         => esc_html__( 'Image', 'cmb2' ),
+		'desc'         => esc_html__( '', 'cmb2' ),
+		'id'           => 'image',
+		'type'         => 'file',
+	) );
+
+  $gallery_metabox->add_group_field( $gallery_group, array(
+		'name'         => esc_html__( 'Caption', 'cmb2' ),
+		'desc'         => esc_html__( '', 'cmb2' ),
+		'id'           => 'caption',
+		'type'         => 'text',
 	) );
 
   // Sections
@@ -96,6 +131,7 @@ function igv_cmb_metaboxes() {
 			'sortable'      => true,
 			// 'closed'     => true, // true to have the groups closed by default
 		),
+    'show_on_cb'    => 'igv_exclude_field_news',
 	) );
 
   $sections_metabox->add_group_field( $sections_group, array(
@@ -145,6 +181,12 @@ function igv_cmb_metaboxes() {
     	),
   	) );
 
+  }
+
+  function igv_exclude_field_news($cmb) {
+    $news_page = get_page_by_path('news');
+    $home_page = get_page_by_path('home');
+    return $news_page->ID !== $cmb->object_id() && $home_page->ID !== $cmb->object_id();
   }
 
 }

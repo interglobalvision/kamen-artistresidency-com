@@ -32,17 +32,17 @@ $options = get_site_option('_igv_site_options');
 
 <section id="main-container">
 
-  <header id="header" class="padding-top-tiny padding-bottom-basic">
+  <header id="header" class="padding-top-tiny padding-bottom-tiny border-bottom margin-bottom-small">
     <h1 class="u-visuallyhidden"><?php bloginfo('name'); ?></a></h1>
 
     <div class="container">
       <div class="grid-row align-items-center justify-between">
 
-        <div id="logo-holder" class="grid-item item-s-auto item-l-3">
+        <div id="logo-holder" class="grid-item item-s-6 item-l-2">
           <a href="<?php echo home_url(); ?>"><img id="header-logo" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/kamen-logo.png" /></a>
         </div>
 
-        <nav id="main-nav" class="grid-item item-s-12 item-m-auto flex-grow">
+        <nav id="main-nav" class="grid-item item-s-12 item-l-auto flex-grow">
           <?php
             wp_nav_menu( array(
               'menu' => 'main'
@@ -50,8 +50,20 @@ $options = get_site_option('_igv_site_options');
           ?>
         </nav>
 
-        <div id="header-spacer" class="grid-item item-s-auto item-l-3">&nbsp;</div>
-
+        <div class="grid-item item-s-12 item-l-2 text-align-right">
+          <?php
+            if (!empty($options['socialmedia_instagram'])) {
+          ?>
+            <a class="social-link" href="https://instagram.com/<?php echo $options['socialmedia_instagram']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-ig.png" /></a>
+          <?php
+            }
+            if (!empty($options['socialmedia_facebook_url'])) {
+          ?>
+            <a class="social-link" href="<?php echo $options['socialmedia_facebook_url']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-fb.png" /></a>
+          <?php
+            }
+          ?>
+        </div>
       </div>
     </div>
   </header>

@@ -6,9 +6,11 @@
 function create_custom_pages() {
   $custom_pages = array(
     'home' => 'Home',
-    'news' => 'News',
-    'about' => 'About Us',
-    'apply' => 'Apply',
+    'news' => 'News & Announcements',
+    'region' => 'Bileća Lake, Orah, Bosnia-Herzegovina',
+    'residency' => 'The Residency',
+    'about' => 'The KAMEN Team',
+    'apply' => 'Application Procedure',
   );
   foreach($custom_pages as $page_name => $page_title) {
     $page = get_page_by_path($page_name);

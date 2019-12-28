@@ -3,7 +3,8 @@
 
 // Import dependencies
 import lazySizes from 'lazysizes';
-import slick from 'slick-carousel';
+import Swiper from 'swiper';
+import Masonry from 'masonry-layout';
 import Mailchimp from './mailchimp';
 
 // Import style
@@ -17,7 +18,7 @@ class Site {
 
     $(document).ready(this.onReady.bind(this));
 
-
+    this.setupSwiperInstance = this.setupSwiperInstance.bind(this);
 
   }
 
@@ -30,11 +31,8 @@ class Site {
 
     this.bindMenuToggles();
 
-    this.setSlideHeight = this.setSlideHeight.bind(this);
-
-    this.$slickCarousel = $('#slick-carousel');
-
-    this.initCarousel();
+    this.initSwiper();
+    this.initMasonry();
   }
 
   fixWidows() {
@@ -46,42 +44,37 @@ class Site {
     });
   }
 
-  initCarousel() {
-    if (this.$slickCarousel.length) {
-      var autoPlay = $('body').hasClass('home') ? true : false;
-
-      this.$slickCarousel.slick({
-        infinite: true,
-        speed: 400,
-        slidesToShow: 1,
-        centerMode: false,
-        variableWidth: false,
-        dots: true,
-        arrows: true,
-        prevArrow: '#slick-prev',
-        nextArrow: '#slick-next',
-        focusOnSelect: false,
-        appendDots: '#slick-dots-holder',
-        rows: 0,
-        autoplay: autoPlay,
-        autoplaySpeed: 4000,
-        /*responsive: [
-          {
-            breakpoint: 650,
-            settings: "unslick"
-          }
-        ],
-        mobileFirst: false,*/
-      });
-
-      this.$slickCarousel.on('init', this.setSlideHeight);
-    }
+  initSwiper() {
+    $('.swiper-container').each(this.setupSwiperInstance);
   }
 
-  setSlideHeight() {
-    if ($('.slick-slide').length) {
-      $('.slick-slide').height($('.slick-list').height());
-    }
+  setupSwiperInstance(index, element) {
+    $(element).addClass('swiper-instance-' + index);
+    var selector = '.swiper-instance-' + index;
+
+    var swiperInstance = new Swiper (selector, {
+      simulateTouch: true,
+      slidesPerView: 'auto',
+      freeMode: true,
+      mousewheel: {
+        sensitivity: 1,
+        forceToAxis: true,
+        invert: true,
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+        hide: false,
+        snapOnRelease: false,
+      },
+    });
+  }
+
+  initMasonry() {
+    var msnry = new Masonry( '.masonry-grid', {
+      itemSelector: '.masonry-item',
+      transitionDuration: 0
+    });
   }
 
   bindMenuToggles() {

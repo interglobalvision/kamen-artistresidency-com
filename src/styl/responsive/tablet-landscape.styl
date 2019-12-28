@@ -26,15 +26,26 @@
   #main-content
     min-height: calc('100vh - ' + ($header-height + $footer-height));
 
-  #header-logo
-    width: 160px
-
   #main-nav
     a
       padding: $margin-tiny
 
-  #footer-logo
-    width: 120px
+  #home-banner
+    height: 65vh
+
+  .swiper-container
+    width: calc('100% - ' + $margin-small)
+    .swiper-slide
+      img
+        max-height: 470px
+      &:not(:first-child)
+        padding-left: $margin-tiny
+      &:not(:last-child)
+        padding-right: $margin-tiny
+
+  .masonry-item
+    padding-left: $margin-tiny
+    padding-right: $margin-tiny
 
   h1
     font-size: $font-size-large
@@ -42,14 +53,19 @@
   h2
     font-size: $font-size-mid
 
-  .wp-caption-text
-    font-size: $font-size-small
+  #post-content
+    & > *
+      padding-left: $margin-tiny
+      padding-right: $margin-tiny
+    p
+      width: 50%
+      margin-left: 25%
+      margin-right: 25%
+    .wp-block-image
+      max-width: 66.6666666%
+      figcaption
+        font-size: $font-size-small
+        margin-top: $margin-micro
 
   #footer-social
-    order: 5
-  #footer-mailinglist
-    order: 2
-  #footer-email
-    order: 3
-  #footer-address
-    order: 4
+    order: initial

@@ -21,6 +21,9 @@ font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size
 $header-height = 144px
 $footer-height = 253px
 
+body
+  overflow-x: hidden
+
 #main-content
   min-height: calc('100vh - ' + ($header-height + $footer-height));
   ul
@@ -31,6 +34,12 @@ $footer-height = 253px
 
 .container
   max-width: 1600px
+
+.border-bottom
+  border-bottom: 1px solid $color-blue
+
+.border-top
+  border-top: 1px solid $color-blue
 
 #contact
   text-align: center
@@ -62,16 +71,20 @@ button,
   display: inline-block
 
 #header-logo
-  width: 120px
-
-#header-spacer
-  display: none
+  width: 100px
 
 .menu-icon
   width: 20px
 
 .current-menu-item
   color: $color-blue
+
+#home-banner
+  background-size: cover
+  background-position: center
+  width: 100%
+  height: 50vh
+  max-height: 900px
 
 p
   a:link,
@@ -83,18 +96,10 @@ p
   margin-left: .4em
   display: inline-block
   img
-    width: 1.2em
+    height: 1.2em
+    width: auto
   &:first-of-type
     margin-left: 0
-
-#footer
-  background-color: $color-blue
-  color: $color-white
-  p
-    margin-bottom: 0
-
-#footer-logo
-  width: 90px
 
 #mailchimp-email
   background: transparent
@@ -105,13 +110,17 @@ p
   &::placeholder
     color: $color-grey-lite
     font-family: $font-sans
+  &:focus
+    outline: none
+    &::placeholder
+      color: transparent
 
 #mailchimp-submit
   border: none
   background: transparent
   color: $color-white
   cursor: pointer
-  font-weight: normal
+  font-weight: bold
 
 #mailchimp-response
   position: absolute
@@ -121,88 +130,37 @@ p
   li
     list-style-type: number
 
-.slide-content-holder:not(:last-of-type)
-  margin-bottom: $margin-basic
-
-#single-header
-  order: 1
-
-#single-content
-  order: 2
-
-#carousel-container
-  order: 3
-
-.slick-list
-  display: block
-  position: relative
-  margin: 0
-  padding: 0
-
-.slick-track
-  position: relative
-  top: 0
-  left: 0
-  display: block
-  margin-left: auto
-  margin-right: auto
-
-.slide-content-holder
-  margin-bottom: 0 !important
-  .grid-column
-    width: 100%
-    height: 100%
-  img
-    max-width: 100%
-    max-height: 100%
+.swiper-container
+  width: calc('100% - ' + $margin-small)
+  margin: 0 auto
+  overflow: visible
+  .swiper-slide
     width: auto
     height: auto
+    margin: 0
+    img
+      width: auto
+      max-height: 200px
+    &:not(:first-child)
+      padding-left: $margin-tiny
+    &:not(:last-child)
+      padding-right: $margin-tiny
 
-#slick-carousel
-  overflow: hidden
+.swiper-scrollbar
+  height: 1px !important
+  background-color: $color-grey-dark
 
-.slick-arrow
-  width: 20px
-  height: 20px
-  border: 2px solid $color-black
-  border-width: 2px 2px 0 0
-  background: none
-  cursor: pointer
-  &:hover
-    border-color: $color-blue
+.swiper-scrollbar-drag
+  height: 10px
+  margin-top: -4.5px
+  border-radius: 10px
+  background-color: $color-grey-dark
 
-#slick-prev
-  transform: rotate(-135deg)
-
-#slick-next
-  transform: rotate(45deg)
-
-.slick-dots
-  li
-    display: inline-block
-    height: 10px
-    width: 10px
-    font-size: 0
-    appearance: none
-    border: 2px solid $color-black
-    border-radius: 10px
-    margin-right: $margin-tiny
-    cursor: pointer
-    &:hover:not(.slick-active)
-      border-color: $color-blue
-    &.slick-active
-      background: $color-blue
-      border: 2px solid $color-blue
-      cursor: default
-      pointer-events: none
-    button
-      appearance: none
-      height: 10px
-      width: 10px
-      border: none
-      border-radius: 10px
-      background: none
-      visibility: hidden
+.masonry-item
+  float: left
+  width: 100%
+  padding-left: $margin-tiny
+  padding-right: $margin-tiny
 
 h1
   font-size: $font-size-large
@@ -214,26 +172,38 @@ h2
 .content-section:not(:first-of-type)
   margin-top: $margin-small
 
-p img, .wp-caption
-  display: block
-  margin: 0 auto
-  text-align: center
+#post-content
+  & > *
+    padding-left: $margin-tiny
+    padding-right: $margin-tiny
+  p
+    max-width: 460px
+  .wp-block-image
+    max-width: 511px
+    font-size: 0
+    text-align: center
+    figcaption
+      color: $color-black
+      font-size: $font-size-small
+      margin-top: $margin-micro
 
-.wp-caption-text
-  font-size: $font-size-small
+#footer
+  background-color: $color-blue
+  color: $color-white
+  p
+    margin-bottom: 0
 
-#footer-social
-  order: 5
-  text-align: left
+#footer-logo
+  width: 100px
 
 #footer-logo-holder
-  order: 1
+  order: -2
 
-#footer-mailinglist
-  order: 2
-
-#footer-email
-  order: 3
-
-#footer-address
-  order: 4
+#footer-social
+  order: -1
+  .social-link
+    margin-right: 1em
+    &:last-of-type
+      margin-right: 0
+    img
+      height: 2em

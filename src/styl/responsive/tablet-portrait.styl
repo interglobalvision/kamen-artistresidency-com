@@ -29,9 +29,6 @@
   $header-height = 132px
   $footer-height = 118px
 
-  body
-    border-top: 10px solid $color-blue
-
   #main-content
     min-height: calc('100vh - ' + ($header-height + $footer-height));
 
@@ -54,24 +51,23 @@
     a
       padding: 0 $margin-tiny
 
-  #logo-holder
-    order: 1
-  #main-nav
-    order: 2
-  #header-spacer
-    display: initial
-    order: 3
+  #home-banner
+    height: 60vh
 
-  #single-content
-    order: 3
-  #carousel-container
-    order: 2
+  .swiper-container
+    width: calc('100% - ' + $margin-small)
+    .swiper-slide
+      img
+        max-height: 400px
+      &:not(:first-child)
+        padding-left: $margin-tiny
+      &:not(:last-child)
+        padding-right: $margin-tiny
 
-  .text-columns
-    section
-      -webkit-column-break-inside: avoid
-      page-break-inside: avoid
-      break-inside: avoid-column
+  .masonry-item
+    width: 50%
+    padding-left: $margin-tiny
+    padding-right: $margin-tiny
 
   h1
     font-size: $font-size-large
@@ -79,18 +75,15 @@
   h2
     font-size: $font-size-mid
 
-  .wp-caption-text
-    font-size: $font-size-small
-
-  #footer-social
-    order: 2
-    text-align: right
-
-  #footer-mailinglist
-    order: 3
-
-  #footer-email
-    order: 4
-
-  #footer-address
-    order: 5
+  #post-content
+    & > *
+      padding-left: $margin-tiny
+      padding-right: $margin-tiny
+    p
+      width: 75%
+      max-width: 490px
+    .wp-block-image
+      max-width: 83.3333333%
+      figcaption
+        font-size: $font-size-small
+        margin-top: $margin-micro
