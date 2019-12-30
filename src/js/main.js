@@ -19,11 +19,10 @@ class Site {
     $(document).ready(this.onReady.bind(this));
 
     this.setupSwiperInstance = this.setupSwiperInstance.bind(this);
-
   }
 
   onResize() {
-    this.setSlideHeight();
+
   }
 
   onReady() {
@@ -33,6 +32,7 @@ class Site {
 
     this.initSwiper();
     this.initMasonry();
+    this.bindScroll();
   }
 
   fixWidows() {
@@ -51,6 +51,7 @@ class Site {
   setupSwiperInstance(index, element) {
     $(element).addClass('swiper-instance-' + index);
     var selector = '.swiper-instance-' + index;
+    var _this = this;
 
     var swiperInstance = new Swiper (selector, {
       simulateTouch: true,
@@ -67,21 +68,55 @@ class Site {
         hide: false,
         snapOnRelease: false,
       },
+      on: {
+        init: function() {
+          var $container = this.$wrapperEl.parent()
+          if ((this.size / this.virtualSize) >= 1) {
+            $container.addClass('hide-scrollbar');
+          } else {
+            $container.removeClass('hide-scrollbar');
+          }
+        },
+        resize: function() {
+          var $container = this.$wrapperEl.parent()
+          if ((this.size / this.virtualSize) >= 1) {
+            $container.addClass('hide-scrollbar');
+          } else {
+            $container.removeClass('hide-scrollbar');
+          }
+        },
+        touchStart: function() {
+          this.$wrapperEl.parent().addClass('scrolling');
+        },
+        touchEnd: function() {
+          this.$wrapperEl.parent().removeClass('scrolling');
+        },
+      }
     });
   }
 
   initMasonry() {
-    var msnry = new Masonry( '.masonry-grid', {
-      itemSelector: '.masonry-item',
-      transitionDuration: 0
-    });
+    if ($('.masonry-grid').length) {
+      var msnry = new Masonry( '.masonry-grid', {
+        itemSelector: '.masonry-item',
+        transitionDuration: 0
+      });
+    }
   }
 
   bindMenuToggles() {
     $('.menu-toggle, .current_page_item').on('click', function(e) {
       e.preventDefault();
-      $('#menu-holder').toggleClass('active');
+      $('#header').toggleClass('menu-active');
     });
+  }
+
+  bindScroll() {
+    $(window).on('scroll', function() {
+      if ($('#header').hasClass('menu-active')) {
+        $('#header').removeClass('menu-active');
+      }
+    })
   }
 
 }

@@ -15,12 +15,12 @@ if (have_posts()) {
 ?>
 
         <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-          <header class="padding-bottom-small">
+          <header class="padding-top-small padding-bottom-small">
             <div class="container grid-row justify-center">
               <div class="grid-item item-s-12 item-m-7 item-l-5 text-align-center">
                 <div class="font-size-small">
                   <span><?php echo is_singular('resident') ? 'Resident' : 'News'; ?></span>
-                  <?php echo empty($hide_date) ? '<span> • </span>' : ''; ?>
+                  <?php echo empty($hide_date) ? '<span>&ensp;|&ensp;</span>' : ''; ?>
                   <date><?php
                     if (is_singular('resident')) {
                       echo !empty($residency) ? $residency : '';
@@ -29,7 +29,7 @@ if (have_posts()) {
                     }
                   ?></date>
                 </div>
-                <h1><?php the_title(); ?></h1>
+                <h1 class="font-size-extra font-bold"><?php the_title(); ?></h1>
               </div>
             </div>
           </header>

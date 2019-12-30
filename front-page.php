@@ -11,7 +11,7 @@ if (have_posts()) {
 
     if (!empty(get_the_post_thumbnail())) {
 ?>
-  <section class="padding-bottom-small">
+  <section class="padding-top-small padding-bottom-small">
     <div class="container grid-row">
       <div class="grid-item item-s-12">
         <div id="home-banner" style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></div>

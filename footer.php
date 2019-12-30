@@ -2,7 +2,7 @@
 $options = get_site_option('_igv_site_options');
 ?>
 
-  <footer id="footer" class="padding-top-small padding-bottom-basic margin-top-small">
+  <footer id="footer" class="padding-top-small padding-bottom-basic margin-top-small font-size-basic">
     <div class="container">
       <div id="footer-row" class="grid-row justify-between">
         <div id="footer-logo-holder" class="grid-item item-s-6 item-m-6 item-l-3 margin-bottom-small">
@@ -16,7 +16,7 @@ $options = get_site_option('_igv_site_options');
               <input type="email" name="EMAIL" placeholder="Your email" id="mailchimp-email" class="grid-item no-gutter">
               <button type="submit" id="mailchimp-submit" class="grid-item no-gutter">Join</button>
             </form>
-            <div id="mailchimp-response" class="font-size-small"></div>
+            <div id="mailchimp-response"></div>
           </div>
           <div class="grid-item item-s-12 item-m-6 item-l-12 margin-bottom-small">
             <h4><span class="font-bold">Contact</span></h4>

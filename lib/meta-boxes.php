@@ -64,6 +64,12 @@ function igv_cmb_metaboxes() {
 		'type' => 'checkbox',
 	) );
 
+  $news_metabox->add_field( array(
+		'name' => esc_html__( 'Highlight', 'cmb2' ),
+		'id'   => $prefix . 'highlight',
+		'type' => 'checkbox',
+	) );
+
   $options_metabox = new_cmb2_box( array(
 		'id'            => $prefix . 'options_metabox',
 		'title'         => esc_html__( 'Options', 'cmb2' ),

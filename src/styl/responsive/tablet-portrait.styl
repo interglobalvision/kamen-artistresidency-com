@@ -1,6 +1,6 @@
 @media screen and (min-width: 640px)
 
-  $gutter = 27px
+  $gutter = 28px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -9,16 +9,19 @@
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
+  $font-size-micro = 10px
+  $font-size-tiny = 11px
+  $font-size-small = 13px
   $font-size-basic = 15px
-  $font-size-small = $font-size-basic * .75
-  $font-size-mid = $font-size-basic * 1.25
-  $font-size-large = $font-size-basic * 1.75
+  $font-size-mid = 18px
+  $font-size-large = 24px
+  $font-size-extra = 32px
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   grid-maker(96%, $gutter, m)
 
-  font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
   .mobile-only
     display: none !important
@@ -26,43 +29,42 @@
   .desktop-only
     display: initial !important
 
-  $header-height = 132px
-  $footer-height = 118px
+  $header-height = 52px
+  $footer-height = 312px
+
+  #header-spacer
+    height: $header-height
+
+  #mobile-nav
+    padding: 0
+    ul
+      flex-direction: row
+      a
+        padding: $margin-tiny
+
+  .menu-toggle
+    width: 40px
 
   #main-content
     min-height: calc('100vh - ' + ($header-height + $footer-height));
-
-  #header
-    width: 100%
-
-  #main-nav
-    display: block
-    height: 100%
-    margin-top: 0
-    div
-      height: 100%
-    ul
-      width: 100%
-      height: 100%
-      display: flex
-      flex-direction: row
-      align-items: center
-      justify-content: center
-    a
-      padding: 0 $margin-tiny
 
   #home-banner
     height: 60vh
 
   .swiper-container
     width: calc('100% - ' + $margin-small)
+
+  .swiper-slide
+    width: 320px
+    &:not(:first-child)
+      padding-left: $margin-tiny
+    &:not(:last-child)
+      padding-right: $margin-tiny
+
+  #gallery
     .swiper-slide
       img
         max-height: 400px
-      &:not(:first-child)
-        padding-left: $margin-tiny
-      &:not(:last-child)
-        padding-right: $margin-tiny
 
   .masonry-item
     width: 50%

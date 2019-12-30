@@ -31,39 +31,80 @@ $options = get_site_option('_igv_site_options');
 ?>
 
 <section id="main-container">
-
-  <header id="header" class="padding-top-tiny padding-bottom-tiny border-bottom margin-bottom-small">
+  <header id="header">
     <h1 class="u-visuallyhidden"><?php bloginfo('name'); ?></a></h1>
 
-    <div class="container">
-      <div class="grid-row align-items-center justify-between">
+    <div id="main-nav-holder" class="border-bottom">
+      <div class="container">
+        <div class="grid-row align-items-center justify-between">
 
-        <div id="logo-holder" class="grid-item item-s-6 item-l-2">
-          <a href="<?php echo home_url(); ?>"><img id="header-logo" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/kamen-logo.png" /></a>
+          <div id="logo-holder" class="grid-item item-s-6 item-l-2 padding-top-tiny padding-bottom-tiny font-size-zero">
+            <a href="<?php echo home_url(); ?>"><img id="header-logo" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/kamen-logo.png" /></a>
+          </div>
+
+          <nav id="main-nav" class="grid-item no-gutter item-s-12 item-l-auto flex-grow">
+            <?php
+              wp_nav_menu( array(
+                'menu' => 'main'
+              ) );
+            ?>
+          </nav>
+
+          <div id="main-nav-social" class="grid-item item-s-12 item-l-2 text-align-right">
+            <?php
+              if (!empty($options['socialmedia_instagram'])) {
+            ?>
+              <a class="social-link" href="https://instagram.com/<?php echo $options['socialmedia_instagram']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-ig.png" /></a>
+            <?php
+              }
+              if (!empty($options['socialmedia_facebook_url'])) {
+            ?>
+              <a class="social-link" href="<?php echo $options['socialmedia_facebook_url']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-fb.png" /></a>
+            <?php
+              }
+            ?>
+          </div>
+
+          <div id="menu-toggle-holder" class="grid-item">
+            <img id="menu-toggle-open" class="menu-toggle" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/menu-open.png"/>
+            <img id="menu-toggle-close" class="menu-toggle" src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/menu-close.png" />
+          </div>
         </div>
+      </div>
+    </div>
 
-        <nav id="main-nav" class="grid-item item-s-12 item-l-auto flex-grow">
+    <div id="mobile-nav-holder">
+      <nav id="mobile-nav" class="border-bottom">
+        <ul class="container justify-center align-items-center">
           <?php
-            wp_nav_menu( array(
-              'menu' => 'main'
-            ) );
-          ?>
-        </nav>
+            $menuLocations = get_nav_menu_locations();
+            $menuID = $menuLocations['main'];
+            $menu_items = wp_get_nav_menu_items($menuID);
+            foreach ( $menu_items as $menu_item ) {
+              $current = ( $_SERVER['REQUEST_URI'] == parse_url( $menu_item->url, PHP_URL_PATH ) ) ? 'current-menu-item' : '';
 
-        <div class="grid-item item-s-12 item-l-2 text-align-right">
+              echo '<li class="' . $current . '"><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+            }
+          ?>
           <?php
             if (!empty($options['socialmedia_instagram'])) {
           ?>
+          <li>
             <a class="social-link" href="https://instagram.com/<?php echo $options['socialmedia_instagram']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-ig.png" /></a>
+          </li>
           <?php
             }
             if (!empty($options['socialmedia_facebook_url'])) {
           ?>
+          <li>
             <a class="social-link" href="<?php echo $options['socialmedia_facebook_url']; ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/icon-fb.png" /></a>
+          </li>
           <?php
             }
           ?>
-        </div>
-      </div>
+        </ul>
+      </nav>
     </div>
   </header>
+
+  <div id="header-spacer"></div>

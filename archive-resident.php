@@ -3,9 +3,9 @@ get_header();
 ?>
 
 <main id="main-content">
-  <header class="padding-bottom-small border-bottom">
+  <header class="padding-top-small padding-bottom-small border-bottom">
     <div class="container grid-row justify-center">
-      <h1 class="grid-item text-align-center">Current & Past Residents</h1>
+      <h1 class="grid-item text-align-center font-bold font-size-large">Current & Past Residents</h1>
     </div>
   </header>
 

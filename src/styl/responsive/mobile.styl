@@ -7,19 +7,22 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
+$font-size-micro = 10px
+$font-size-tiny = 10px
+$font-size-small = 12px
 $font-size-basic = 14px
-$font-size-small = $font-size-basic * .75
-$font-size-mid = $font-size-basic * 1.25
-$font-size-large = $font-size-basic * 1.75
+$font-size-mid = 17px
+$font-size-large = 21px
+$font-size-extra = 28px
 
 grid-maker(94%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-font-sizes($font-size-basic, false, $font-size-large, $font-size-mid, $font-size-small)
+font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
-$header-height = 144px
-$footer-height = 253px
+$header-height = 42px
+$footer-height = 372px
 
 body
   overflow-x: hidden
@@ -46,16 +49,64 @@ body
   padding: $margin-basic 0
 
 #header
-  display: flex
-  flex-wrap: nowrap
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 100
+  pointer-events: none
+
+#header-spacer
+  width: 100%
+  height: $header-height
+
+#main-nav-holder
+  position: relative
+  background: $color-sand
+  width: 100%
+  z-index: 200
+  pointer-events: auto
+
+#mobile-nav-holder
+  position: relative
+  background: $color-white
+  width: 100%
+  z-index: 100
+  transition: transform 100ms linear
+  transform: translateY(-100%)
+  pointer-events: auto
+
+#mobile-nav
+  padding: $margin-tiny 0
+  ul
+    display: flex
+    flex-direction: column
+    a
+      display: block
+      padding: $margin-tiny
+
+.menu-toggle
+  width: 30px
+
+#menu-toggle-open
+  display: block
+#menu-toggle-close
+  display: none
+
+#header
+  &.menu-active
+    #mobile-nav-holder
+      transform: translateY(0%)
+    #menu-toggle-open
+      display: none
+    #menu-toggle-close
+      display: block
 
 #main-nav
-  margin-top: $margin-small
-  ul
-    width: 100%
-    display: flex
-    flex-direction: row
-    justify-content: space-around
+  display: none
+
+#main-nav-social
+  display: none
 
 input,
 button,
@@ -64,11 +115,7 @@ button,
   font-family: $font-sans
 
 .menu-toggle
-  margin: $margin-tiny
-  padding: $margin-small
-  margin-right: 0
   cursor: pointer
-  display: inline-block
 
 #header-logo
   width: 100px
@@ -134,27 +181,47 @@ p
   width: calc('100% - ' + $margin-small)
   margin: 0 auto
   overflow: visible
+  cursor: grab
+  &.hide-scrollbar
+    padding-bottom: 0 !important
+  &.scrolling
+    cursor: grabbing
+  a
+    cursor: pointer
+  figcaption
+    cursor: initial
+
+.swiper-slide
+  width: 200px
+  height: auto
+  margin: 0
+  &:not(:first-child)
+    padding-left: $margin-tiny
+  &:not(:last-child)
+    padding-right: $margin-tiny
+
+#gallery
   .swiper-slide
     width: auto
-    height: auto
-    margin: 0
     img
       width: auto
       max-height: 200px
-    &:not(:first-child)
-      padding-left: $margin-tiny
-    &:not(:last-child)
-      padding-right: $margin-tiny
 
 .swiper-scrollbar
   height: 1px !important
   background-color: $color-grey-dark
+  pointer-events: none
+
+.swiper-container-horizontal > .swiper-scrollbar
+  bottom: auto
 
 .swiper-scrollbar-drag
   height: 10px
   margin-top: -4.5px
   border-radius: 10px
   background-color: $color-grey-dark
+  cursor: default
+  pointer-events: auto
 
 .masonry-item
   float: left
