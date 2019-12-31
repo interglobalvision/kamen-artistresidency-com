@@ -29,7 +29,7 @@ if (have_posts()) {
                     }
                   ?></date>
                 </div>
-                <h1 class="font-size-extra font-bold"><?php the_title(); ?></h1>
+                <h1 class="font-size-extra"><?php the_title(); ?></h1>
               </div>
             </div>
           </header>

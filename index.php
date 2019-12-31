@@ -6,7 +6,7 @@ get_header();
   <header class="padding-top-small padding-bottom-small">
     <div class="container">
       <div class="grid-row">
-        <h1 class="text-align-center grid-item item-s-12 font-bold">News & Announcements</h1>
+        <h1 class="text-align-center grid-item item-s-12">News & Announcements</h1>
       </div>
     </div>
   </header>
@@ -46,7 +46,7 @@ if ($highlight_query->have_posts()) {
           <div class="grid-item item-s-12 item-m-6 item-l-5 padding-top-tiny grid-column justify-between">
             <div>
               <date class="font-size-tiny"><?php echo empty($hide_date) ? get_the_date('j F, Y', $post->ID) : ''; ?></date>
-              <h2 class="font-size-extra font-bold"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+              <h2 class="font-size-extra"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             </div>
             <div><?php the_excerpt(); ?></div>
           </div>
@@ -83,7 +83,7 @@ if ($news_query->have_posts()) {
           <a href="<?php the_permalink(); ?>">
             <div><?php the_post_thumbnail('archive-thumb'); ?></div>
             <date class="font-size-micro"><?php echo empty($hide_date) ? get_the_date('j F, Y', $post->ID) : ''; ?></date>
-            <h2 class="font-size-basic font-bold"><?php the_title(); ?></h2>
+            <h2 class="font-size-basic"><?php the_title(); ?></h2>
           </a>
         </article>
 <?php

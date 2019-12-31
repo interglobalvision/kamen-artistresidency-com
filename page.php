@@ -15,7 +15,7 @@ if (have_posts()) {
   <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
     <header class="padding-top-small padding-bottom-small">
       <div class="container grid-row justify-center">
-        <h1 class="grid-item text-align-center font-bold font-size-large"><?php the_title(); ?></h1>
+        <h1 class="grid-item text-align-center"><?php the_title(); ?></h1>
       </div>
     </header>
 

@@ -146,7 +146,7 @@ function igv_cmb_metaboxes() {
 		'type' => 'wysiwyg',
     'options' => array(
 	    'wpautop' => false, // use wpautop?
-	    'media_buttons' => true, // show insert/upload button(s)
+	    'media_buttons' => false, // show insert/upload button(s)
       'textarea_rows' => get_option('default_post_edit_rows', 10), // rows="..."
   	),
 	) );

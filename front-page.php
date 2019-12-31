@@ -14,7 +14,7 @@ if (have_posts()) {
   <section class="padding-top-small padding-bottom-small">
     <div class="container grid-row">
       <div class="grid-item item-s-12">
-        <div id="home-banner" style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></div>
+        <div id="home-banner" style="background-image: url('<?php the_post_thumbnail_url('full-width'); ?>')"></div>
       </div>
     </div>
   </section>

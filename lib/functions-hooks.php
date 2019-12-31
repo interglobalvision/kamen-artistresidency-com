@@ -25,3 +25,25 @@ function create_custom_pages() {
   }
 }
 add_filter( 'after_setup_theme', 'create_custom_pages' );
+
+function igv_allowed_block_types( $allowed_blocks, $post ) {
+  $allowed_blocks = array(
+		'core/paragraph',
+		'core/heading',
+		'core/list',
+    'core/image',
+    'core-embed/youtube',
+    'core-embed/vimeo',
+	);
+
+  if( $post->post_type !== 'post' ) {
+    $allowed_blocks = array(
+  		'core/paragraph',
+  		'core/heading',
+  		'core/list',
+  	);
+  }
+
+	return $allowed_blocks;
+}
+add_filter( 'allowed_block_types', 'igv_allowed_block_types', 10, 2 );

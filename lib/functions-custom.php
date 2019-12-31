@@ -11,13 +11,12 @@ function render_carousel($images) {
       <div class="swiper-container padding-bottom-small">
         <div class="swiper-wrapper padding-top-small <?php echo $is_single ? 'justify-center' : ''; ?>">
         <?php
-          $image_size = is_front_page() ? 'front-page-carousel' : 'carousel';
           foreach($images as $image) {
         ?>
           <figure class="swiper-slide text-align-center grid-column justify-start padding-bottom-small">
             <div class="font-size-zero">
               <?php
-                echo wp_get_attachment_image($image['image_id'], $image_size, false, array('data-no-lazysizes'=>'true'));
+                echo wp_get_attachment_image($image['image_id'], 'carousel', false, array('data-no-lazysizes'=>'true'));
               ?>
             </div>
             <?php if (!empty($image['caption'])) { ?>
