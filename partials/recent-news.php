@@ -35,6 +35,9 @@ if ($recent_query->have_posts()) {
       <?php
         }
       ?>
+        <div class="swiper-slide padding-bottom-small grid-row justify-center align-items-center">
+          <a class="font-size-large link-underline font-blue" href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">More News</a>
+        </div>
       </div>
       <div class="swiper-scrollbar"></div>
     </div>
