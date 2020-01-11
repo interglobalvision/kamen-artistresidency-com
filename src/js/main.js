@@ -51,7 +51,6 @@ class Site {
   setupSwiperInstance(index, element) {
     $(element).addClass('swiper-instance-' + index);
     var selector = '.swiper-instance-' + index;
-    var _this = this;
 
     var swiperInstance = new Swiper (selector, {
       simulateTouch: true,
@@ -70,7 +69,7 @@ class Site {
       },
       on: {
         init: function() {
-          var $container = this.$wrapperEl.parent()
+          var $container = this.$wrapperEl.parent();
           if ((this.size / this.virtualSize) >= 1) {
             $container.addClass('hide-scrollbar');
           } else {
@@ -78,7 +77,7 @@ class Site {
           }
         },
         resize: function() {
-          var $container = this.$wrapperEl.parent()
+          var $container = this.$wrapperEl.parent();
           if ((this.size / this.virtualSize) >= 1) {
             $container.addClass('hide-scrollbar');
           } else {
@@ -116,7 +115,7 @@ class Site {
       if ($('#header').hasClass('menu-active')) {
         $('#header').removeClass('menu-active');
       }
-    })
+    });
   }
 
 }

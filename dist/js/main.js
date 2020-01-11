@@ -562,7 +562,6 @@ var Site = function () {
     value: function setupSwiperInstance(index, element) {
       $(element).addClass('swiper-instance-' + index);
       var selector = '.swiper-instance-' + index;
-      var _this = this;
 
       var swiperInstance = new _swiper2.default(selector, {
         simulateTouch: true,
