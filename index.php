@@ -38,7 +38,7 @@ if ($highlight_query->have_posts()) {
     <article class="news-highlight padding-top-small padding-bottom-small border-top">
       <div class="container">
         <div class="grid-row">
-          <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 font-size-zero">
+          <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 font-size-zero grid-row align-items-center">
             <a href="<?php the_permalink(); ?>">
               <?php the_post_thumbnail('archive-thumb'); ?>
             </a>
