@@ -8,7 +8,7 @@ get_header();
 if (have_posts()) {
   while (have_posts()) {
     the_post();
-    $images = get_post_meta($post->ID, '_igv_gallery', true);
+    $images = get_post_meta($post->ID, '_igv_images', true);
     $sections = get_post_meta($post->ID, '_igv_sections', true);
 ?>
 
