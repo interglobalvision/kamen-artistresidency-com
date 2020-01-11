@@ -29,7 +29,7 @@ if (have_posts()) {
                     }
                   ?></date>
                 </div>
-                <h1 class="font-size-extra"><?php the_title(); ?></h1>
+                <h1 class="font-size-extra line-larger"><?php the_title(); ?></h1>
               </div>
             </div>
           </header>
@@ -39,7 +39,7 @@ if (have_posts()) {
           <?php if (strlen(get_the_content()) > 0) { ?>
 
           <section class="padding-top-small padding-bottom-small border-top">
-            <div id="post-content" class="container grid-row justify-center">
+            <div id="post-content" class="container grid-row justify-center line-larger">
               <?php the_content(); ?>
             </div>
           </section>
