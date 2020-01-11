@@ -85,40 +85,6 @@ function igv_cmb_metaboxes() {
     'show_on_cb'    => 'igv_exclude_field',
 	) );
 
-  $gallery_metabox = new_cmb2_box( array(
-		'id'            => $prefix . 'gallery_metabox',
-		'title'         => esc_html__( 'Gallery', 'cmb2' ),
-		'object_types'  => array( 'post', 'page', 'resident' ), // Post type
-	) );
-
-  $gallery_group = $gallery_metabox->add_field( array(
-		'id'          => $prefix . 'gallery',
-		'type'        => 'group',
-		'description' => esc_html__( '', 'cmb2' ),
-		'options'     => array(
-			'group_title'   => esc_html__( 'Image {#}', 'cmb2' ), // {#} gets replaced by row number
-			'add_button'    => esc_html__( 'Add Another Image', 'cmb2' ),
-			'remove_button' => esc_html__( 'Remove Image', 'cmb2' ),
-			'sortable'      => true,
-			// 'closed'     => true, // true to have the groups closed by default
-		),
-    'show_on_cb'    => 'igv_exclude_field_news',
-	) );
-
-  $gallery_metabox->add_group_field( $gallery_group, array(
-		'name'         => esc_html__( 'Image', 'cmb2' ),
-		'desc'         => esc_html__( '', 'cmb2' ),
-		'id'           => 'image',
-		'type'         => 'file',
-	) );
-
-  $gallery_metabox->add_group_field( $gallery_group, array(
-		'name'         => esc_html__( 'Caption', 'cmb2' ),
-		'desc'         => esc_html__( '', 'cmb2' ),
-		'id'           => 'caption',
-		'type'         => 'text',
-	) );
-
   // Sections
   $sections_metabox = new_cmb2_box( array(
     'id'            => $prefix . 'sections_metabox',
@@ -150,44 +116,6 @@ function igv_cmb_metaboxes() {
       'textarea_rows' => get_option('default_post_edit_rows', 10), // rows="..."
   	),
 	) );
-
-  $about_page = get_page_by_path('about');
-
-  if (!empty($about_page) ) {
-
-    // Team
-    $team_metabox = new_cmb2_box( array(
-      'id'            => $prefix . 'team_metabox',
-      'title'         => esc_html__( 'Team', 'cmb2' ),
-      'object_types'  => array( 'page' ), // Post type
-      'show_on'      => array( 'key' => 'id', 'value' => array($about_page->ID) ),
-    ) );
-
-    $team_group = $team_metabox->add_field( array(
-  		'id'          => $prefix . 'team',
-  		'type'        => 'group',
-  		'description' => esc_html__( '', 'cmb2' ),
-  		'options'     => array(
-  			'group_title'   => esc_html__( 'Team Member {#}', 'cmb2' ), // {#} gets replaced by row number
-  			'add_button'    => esc_html__( 'Add Another Team Member', 'cmb2' ),
-  			'remove_button' => esc_html__( 'Remove Team Member', 'cmb2' ),
-  			'sortable'      => true,
-  			// 'closed'     => true, // true to have the groups closed by default
-  		),
-  	) );
-
-    $team_metabox->add_group_field( $team_group, array(
-  		'name'       => esc_html__( 'Member', 'cmb2' ),
-  		'id'         => 'member',
-  		'type' => 'wysiwyg',
-      'options' => array(
-  	    'wpautop' => false, // use wpautop?
-  	    'media_buttons' => true, // show insert/upload button(s)
-        'textarea_rows' => get_option('default_post_edit_rows', 10), // rows="..."
-    	),
-  	) );
-
-  }
 
   function igv_exclude_field_news($cmb) {
     $news_page = get_page_by_path('news');
