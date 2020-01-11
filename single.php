@@ -9,7 +9,8 @@ if (have_posts()) {
   while (have_posts()) {
     the_post();
     $category = get_the_category();
-    $images = get_post_meta($post->ID, '_igv_gallery', true);
+    $images = get_post_meta($post->ID, '_igv_images', true);
+    //var_dump($images); die;
     $residency = get_post_meta($post->ID, '_igv_residency', true);
     $hide_date = get_post_meta($post->ID, '_igv_hide_date', true);
 ?>

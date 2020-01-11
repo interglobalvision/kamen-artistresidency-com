@@ -11,19 +11,19 @@ function render_carousel($images) {
       <div class="swiper-container padding-bottom-small">
         <div class="swiper-wrapper padding-top-small <?php echo $is_single ? 'justify-center' : ''; ?>">
         <?php
-          foreach($images as $image) {
+          foreach($images as $key => $value) {
         ?>
           <figure class="swiper-slide text-align-center grid-column justify-start padding-bottom-small">
             <div class="font-size-zero">
               <?php
-                echo wp_get_attachment_image($image['image_id'], 'carousel', false, array('data-no-lazysizes'=>'true'));
+                echo wp_get_attachment_image($key, 'carousel', false, array('data-no-lazysizes'=>'true'));
               ?>
             </div>
-            <?php if (!empty($image['caption'])) { ?>
+            <?php /*if (!empty($image['caption'])) { ?>
             <figcaption class="font-size-small text-align-center padding-top-micro">
               <?php echo $image['caption']; ?>
             </figcaption>
-            <?php } ?>
+            <?php }*/ ?>
           </figure>
         <?php
           }
