@@ -58,14 +58,15 @@ function hide_meta_box($hidden, $screen) {
 }
 
 // excerpt ellipsis
-/*function new_excerpt_more($more) {
-  return '<span>... <a href="' . get_permalink( get_the_ID() ) . '" class="link_underline">Continue reading</a></span>';
+function new_excerpt_more($more) {
+  return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-*/
+
 function the_excerpt_more_link( $excerpt ){
     $post = get_post();
-    $excerpt .= '... <a href="'. get_permalink($post->ID) . '">continue reading</a>.';
+    //pr($excerpt); die;
+    $excerpt .= '<a class="link-underline font-blue" href="'. get_permalink($post->ID) . '">Continue reading</a>';
     return $excerpt;
 }
 add_filter( 'the_excerpt', 'the_excerpt_more_link', 21 );
